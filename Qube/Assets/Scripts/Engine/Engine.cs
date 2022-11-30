@@ -49,17 +49,14 @@ public class Engine : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider.gameObject.tag == "SpawnableObjectTag")
-                    {
-                        selectedObject = hit.collider.gameObject;
-                        string objectTag = selectedObject.tag;
-                        movable = canMove.Contains(objectTag);
-                        scalable = canScale.Contains(objectTag);
-                        rotatable = canRotate.Contains(objectTag);
-                    }
+                    selectedObject = hit.collider.gameObject;
+                    string objectTag = selectedObject.tag;
+                    movable = canMove.Contains(objectTag);
+                    scalable = canScale.Contains(objectTag);
+                    rotatable = canRotate.Contains(objectTag);
                 }
             }
-            else if (movable && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject != null)
+            else if (movable && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject != null && Input.touchCount == 1)
             {
                 selectedObject.transform.position = hits[0].pose.position;
             }
@@ -96,9 +93,18 @@ public class Engine : MonoBehaviour
 
             }
 
+            if (rotatable && Input.touchCount == 3)
+            {
+                selectedObject.transform.LookAt(new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z));
+                //var lookPos = camera.transform.position - selectedObject.transform.position;
+                //lookPos.y = 0;
+                //var rotation = Quaternion.LookRotation(lookPos);
+                //selectedObject.transform.rotation = Quaternion.Slerp(selectedObject.transform.rotation, rotation, Time.deltaTime * 30f);
+            }
+
         lable_continue:
 
-            if (Input.touchCount < 2 || Input.GetTouch(1).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Canceled)
+            if (Input.touchCount != 2 || Input.GetTouch(1).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Canceled)
             {
                 scaling = false;
             }
