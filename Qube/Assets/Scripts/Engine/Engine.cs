@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Engine : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class Engine : MonoBehaviour
     bool scalable;
     bool rotatable;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,10 +50,13 @@ public class Engine : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     selectedObject = hit.collider.gameObject;
-                    string objectTag = selectedObject.tag;
-                    movable = canMove.Contains(objectTag);
-                    scalable = canScale.Contains(objectTag);
-                    rotatable = canRotate.Contains(objectTag);
+                    if(selectedObject != null)
+                    {
+                        string objectTag = selectedObject.tag;
+                        movable = canMove.Contains(objectTag);
+                        scalable = canScale.Contains(objectTag);
+                        rotatable = canRotate.Contains(objectTag);
+                    }
                 }
             }
             else if (movable && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject != null && Input.touchCount == 1)
@@ -61,7 +64,7 @@ public class Engine : MonoBehaviour
                 selectedObject.transform.position = hits[0].pose.position;
             }
 
-            if (scalable && Input.touchCount == 2)
+            if (selectedObject != null && scalable && Input.touchCount == 2)
             {
                 var touchZero = Input.GetTouch(0);
                 var touchOne = Input.GetTouch(1);
@@ -93,13 +96,9 @@ public class Engine : MonoBehaviour
 
             }
 
-            if (rotatable && Input.touchCount == 3)
+            if (selectedObject != null && rotatable && Input.touchCount == 3)
             {
                 selectedObject.transform.LookAt(new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z));
-                //var lookPos = camera.transform.position - selectedObject.transform.position;
-                //lookPos.y = 0;
-                //var rotation = Quaternion.LookRotation(lookPos);
-                //selectedObject.transform.rotation = Quaternion.Slerp(selectedObject.transform.rotation, rotation, Time.deltaTime * 30f);
             }
 
         lable_continue:
@@ -119,4 +118,14 @@ public class Engine : MonoBehaviour
 
 
     }
+
+    public void TriggerLevelSolved(string text = null)
+    {
+        if(text != null)
+        {
+            Debug.Log(text);
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 }
