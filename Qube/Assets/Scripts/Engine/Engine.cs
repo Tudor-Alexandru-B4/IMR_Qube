@@ -17,6 +17,8 @@ public class Engine : MonoBehaviour
     bool scaling = false;
 
     [SerializeField]
+    List<string> canDoAll;
+    [SerializeField]
     List<string> canMove;
     [SerializeField]
     List<string> canScale;
@@ -53,9 +55,16 @@ public class Engine : MonoBehaviour
                     if(selectedObject != null)
                     {
                         string objectTag = selectedObject.tag;
-                        movable = canMove.Contains(objectTag);
-                        scalable = canScale.Contains(objectTag);
-                        rotatable = canRotate.Contains(objectTag);
+                        if (canDoAll.Contains(selectedObject.tag))
+                        {
+                            movable = scalable = rotatable = true;
+                        }
+                        else
+                        {
+                            movable = canMove.Contains(objectTag);
+                            scalable = canScale.Contains(objectTag);
+                            rotatable = canRotate.Contains(objectTag);
+                        }
                     }
                 }
             }
@@ -98,7 +107,8 @@ public class Engine : MonoBehaviour
 
             if (selectedObject != null && rotatable && Input.touchCount == 3)
             {
-                selectedObject.transform.LookAt(new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z));
+                //selectedObject.transform.LookAt(new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z));
+                selectedObject.transform.rotation = camera.transform.rotation;
             }
 
         lable_continue:
