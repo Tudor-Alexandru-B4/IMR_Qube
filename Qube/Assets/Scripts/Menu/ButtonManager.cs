@@ -34,16 +34,16 @@ public class ButtonManager : MonoBehaviour
                 {
                     selectedObject = hit.collider.gameObject;
                     string selectedName = selectedObject.name.ToString();
-                    executeIfLevel(selectedName);
-                    executeIfArrowButton(selectedName);
-                    executeIfPlayButton(selectedName);
-                    executeIfBackToMenu(selectedName);
+                    ExecuteIfLevel(selectedName);
+                    ExecuteIfArrowButton(selectedName);
+                    ExecuteIfPlayButton(selectedName);
+                    ExecuteIfBackToMenu(selectedName);
                 }
             }
         }
     }
 
-    void executeIfBackToMenu(string name)
+    void ExecuteIfBackToMenu(string name)
     {
         if (name.CompareTo("backToMenu") == 0)
         {
@@ -51,7 +51,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    void executeIfArrowButton(string name)
+    void ExecuteIfArrowButton(string name)
     {
         if (name.StartsWith("arrow"))
         {
@@ -59,7 +59,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    void executeIfLevel(string name)
+    void ExecuteIfLevel(string name)
     {
         if (name.StartsWith("level"))
         {
@@ -67,7 +67,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    void executeIfPlayButton(string name)
+    void ExecuteIfPlayButton(string name)
     {
         if (name.StartsWith("play"))
         {
