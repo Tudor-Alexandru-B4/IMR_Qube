@@ -32,6 +32,8 @@ public class Engine : MonoBehaviour
     bool scalable;
     bool rotatable;
 
+    float holdingTime = 0;
+
     void Start()
     {
         selectedObject = null;
@@ -42,6 +44,11 @@ public class Engine : MonoBehaviour
     {
         if (Input.touchCount == 0)
             return;
+
+        if (holdingTime <= 2.0f)
+        {
+            holdingTime += Time.deltaTime;
+        }
 
         ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
 
@@ -144,6 +151,22 @@ public class Engine : MonoBehaviour
         }
     }
 
+    private void ExecuteIfTappable()
+    {
+        Debug.Log(holdingTime);
+        if (holdingTime <= 1.0f)
+        {
+            List<TapActionScript> interfaceList;
+            GetInterfaces<TapActionScript>(out interfaceList, gameObject);
+            Debug.Log(interfaceList.Count);
+            Debug.Log(interfaceList);
+            foreach (TapActionScript tappable in interfaceList)
+            {
+                tappable.TapAction();
+            }
+        }
+    }
+
     private void ResetWhenInputEnds()
     {
         if (Input.touchCount != 2 || Input.GetTouch(1).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Canceled)
@@ -154,8 +177,23 @@ public class Engine : MonoBehaviour
         if (Input.touchCount < 1 || Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)
         {
             selectedObject.GetComponent<Outline>().eraseRenderer = true;
+            ExecuteIfTappable();
             selectedObject = null;
             movable = scalable = rotatable = false;
+            holdingTime = 0;
+        }
+    }
+
+    public static void GetInterfaces<T>(out List<T> resultList, GameObject objectToSearch) where T : class
+    {
+        MonoBehaviour[] list = objectToSearch.GetComponents<MonoBehaviour>();
+        resultList = new List<T>();
+        foreach (MonoBehaviour mb in list)
+        {
+            if (mb is T)
+            {
+                resultList.Add((T)((System.Object)mb));
+            }
         }
     }
 
