@@ -1,22 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ChooseMeLevel4 : MonoBehaviour
+public class ChooseMeLevel4 : MonoBehaviour, TapActionScript
 {
     [SerializeField]
     Engine engine;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void OnMouseDown()
+    
+    public void TapAction()
     {
         engine.TriggerLevelSolved();
     }
