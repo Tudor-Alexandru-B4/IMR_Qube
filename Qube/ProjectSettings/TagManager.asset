@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - level_3_simple_cube
   layers:
   - Default
   - TransparentFX
