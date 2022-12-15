@@ -1199,12 +1199,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
+      propertyPath: maxTapHoldTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
       propertyPath: raycastManager
       value: 
       objectReference: {fileID: 388525033}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
       propertyPath: canMove.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
+      propertyPath: justTap.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
@@ -1229,8 +1239,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
-      propertyPath: canDoAll.Array.data[0]
+      propertyPath: justTap.Array.data[0]
       value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
+      propertyPath: canDoAll.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
@@ -1326,5 +1341,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR Enviroment
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4662516723143778521, guid: 75b3d88eed545ec4b97b7a9840c7106c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 75b3d88eed545ec4b97b7a9840c7106c, type: 3}
