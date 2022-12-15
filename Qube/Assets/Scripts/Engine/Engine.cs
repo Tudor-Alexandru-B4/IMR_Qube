@@ -20,6 +20,9 @@ public class Engine : MonoBehaviour
     bool scaling = false;
 
     [SerializeField]
+    float maxTapHoldTime = 1.0f;
+
+    [SerializeField]
     List<string> canDoAll;
     [SerializeField]
     List<string> canMove;
@@ -27,10 +30,15 @@ public class Engine : MonoBehaviour
     List<string> canScale;
     [SerializeField]
     List<string> canRotate;
+    [SerializeField]
+    List<string> justTap;
 
     bool movable;
     bool scalable;
     bool rotatable;
+    bool justTappable = false;
+
+    float holdingTime = 0;
 
     void Start()
     {
@@ -42,6 +50,11 @@ public class Engine : MonoBehaviour
     {
         if (Input.touchCount == 0)
             return;
+
+        if (holdingTime <= maxTapHoldTime + 1.0f)
+        {
+            holdingTime += Time.deltaTime;
+        }
 
         ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
 
@@ -77,8 +90,9 @@ public class Engine : MonoBehaviour
                         scalable = canScale.Contains(objectTag);
                         rotatable = canRotate.Contains(objectTag);
                     }
+                    justTappable = justTap.Contains(selectedObject.tag);
 
-                    if(movable || scalable || rotatable)
+                    if(movable || scalable || rotatable || justTappable)
                     {
                         Outline outline = selectedObject.GetComponent<Outline>();
                         if(outline != null)
@@ -144,6 +158,19 @@ public class Engine : MonoBehaviour
         }
     }
 
+    private void ExecuteIfTappable()
+    {
+        if (holdingTime <= maxTapHoldTime)
+        {
+            List<TapActionScript> interfaceList;
+            GetInterfaces<TapActionScript>(out interfaceList, selectedObject);
+            foreach (TapActionScript tappable in interfaceList)
+            {
+                tappable.TapAction();
+            }
+        }
+    }
+
     private void ResetWhenInputEnds()
     {
         if (Input.touchCount != 2 || Input.GetTouch(1).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Canceled)
@@ -154,8 +181,23 @@ public class Engine : MonoBehaviour
         if (Input.touchCount < 1 || Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)
         {
             selectedObject.GetComponent<Outline>().eraseRenderer = true;
+            ExecuteIfTappable();
             selectedObject = null;
-            movable = scalable = rotatable = false;
+            movable = scalable = rotatable = justTappable = false;
+            holdingTime = 0;
+        }
+    }
+
+    public static void GetInterfaces<T>(out List<T> resultList, GameObject objectToSearch) where T : class
+    {
+        MonoBehaviour[] list = objectToSearch.GetComponents<MonoBehaviour>();
+        resultList = new List<T>();
+        foreach (MonoBehaviour mb in list)
+        {
+            if (mb is T)
+            {
+                resultList.Add((T)((System.Object)mb));
+            }
         }
     }
 
