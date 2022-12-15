@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &41838303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+    type: 3}
+  m_PrefabInstance: {fileID: 664707190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a1b5f506bc0a7448bcc33ff687045f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &479253603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,17 +305,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 97d017d86eac8dc488bcaa8d288aeb38,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 200
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97d017d86eac8dc488bcaa8d288aeb38,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 200
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97d017d86eac8dc488bcaa8d288aeb38,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 200
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97d017d86eac8dc488bcaa8d288aeb38,
         type: 3}
@@ -313,7 +325,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 97d017d86eac8dc488bcaa8d288aeb38,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97d017d86eac8dc488bcaa8d288aeb38,
         type: 3}
@@ -479,5 +491,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd85ee0346462094a86cd50cdb920cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumDistance: 0
   Cube: {fileID: 2125835829}
+  Explosion: {fileID: 7843753219529333853, guid: 1377790ae3a5bdd46962e5140e2f220e,
+    type: 3}
+  Engine: {fileID: 41838303}
+  minimumDistance: 3
+  isFirstTime: 1
