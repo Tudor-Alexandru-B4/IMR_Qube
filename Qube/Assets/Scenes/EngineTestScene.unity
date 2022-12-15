@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 492775978}
   - component: {fileID: 492775977}
   - component: {fileID: 492775981}
+  - component: {fileID: 492775982}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -294,6 +295,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &492775982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492775976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d97a30e84ddc14c86578b9d6fadc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &493537324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +553,7 @@ GameObject:
   - component: {fileID: 1213880740}
   - component: {fileID: 1213880739}
   - component: {fileID: 1213880743}
+  - component: {fileID: 1213880744}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Finish
@@ -641,6 +655,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1213880744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213880738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d97a30e84ddc14c86578b9d6fadc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1276545737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,6 +1020,7 @@ GameObject:
   - component: {fileID: 1600315644}
   - component: {fileID: 1600315643}
   - component: {fileID: 1600315647}
+  - component: {fileID: 1600315648}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Respawn
@@ -1096,6 +1123,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1600315648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600315642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d97a30e84ddc14c86578b9d6fadc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4129331460315949747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,12 +1199,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
+      propertyPath: maxTapHoldTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
       propertyPath: raycastManager
       value: 
       objectReference: {fileID: 388525033}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
       propertyPath: canMove.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
+      propertyPath: justTap.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
@@ -1190,8 +1239,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
-      propertyPath: canDoAll.Array.data[0]
+      propertyPath: justTap.Array.data[0]
       value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
+      propertyPath: canDoAll.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
@@ -1287,5 +1341,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR Enviroment
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4662516723143778521, guid: 75b3d88eed545ec4b97b7a9840c7106c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 75b3d88eed545ec4b97b7a9840c7106c, type: 3}
