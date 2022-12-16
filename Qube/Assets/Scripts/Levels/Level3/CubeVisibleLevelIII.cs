@@ -31,13 +31,19 @@ public class CubeVisibleLevelIII : MonoBehaviour
     {
         float currentDistance = Vector3.Distance(gameObject.transform.position, camera.transform.position);
 
-        if(currentDistance >= minimumDistance && isFirstTime)
+        if(currentDistance >= minimumDistance && isFirstTime && IsVisible())
         {
             isFirstTime = false;
             Instantiate(Explosion, transform.position, Quaternion.identity);
             StartCoroutine(TriggerSolve());
         }
     }
+
+    private bool IsVisible()
+    {
+        return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(camera), gameObject.GetComponent<Renderer>().bounds);
+    }
+
     IEnumerator TriggerSolve()
     {
         yield return new WaitForSecondsRealtime(2);

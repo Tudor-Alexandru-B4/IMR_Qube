@@ -491,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd85ee0346462094a86cd50cdb920cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cube: {fileID: 2125835829}
   Explosion: {fileID: 7843753219529333853, guid: 1377790ae3a5bdd46962e5140e2f220e,
     type: 3}
   Engine: {fileID: 41838303}
