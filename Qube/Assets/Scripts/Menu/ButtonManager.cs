@@ -10,7 +10,8 @@ public class ButtonManager : MonoBehaviour
     ARRaycastManager raycastManager;
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    new Camera camera;
+    [SerializeField]
+    private Camera camera;
     GameObject selectedObject;
 
     void Start()
@@ -26,6 +27,7 @@ public class ButtonManager : MonoBehaviour
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
 
+        //TODO: Use Unity Raycasting
         if (raycastManager.Raycast(Input.GetTouch(0).position, hits))
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
