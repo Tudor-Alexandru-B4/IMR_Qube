@@ -75,7 +75,7 @@ public class Engine : MonoBehaviour
     {
         if (Input.GetTouch(0).phase == TouchPhase.Began && selectedObject == null)
         {
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && selectedObject == null)
             {
                 selectedObject = hit.collider.gameObject;
                 InitiateAvailableMoves();
@@ -194,6 +194,16 @@ public class Engine : MonoBehaviour
             movable = scalable = rotatable = justTappable = false;
             holdingTime = 0;
         }
+    }
+
+    public void ForceReset()
+    {
+        scaling = false;
+        selectedObject.GetComponent<Outline>().eraseRenderer = true;
+        ExecuteIfTappable();
+        selectedObject = null;
+        movable = scalable = rotatable = justTappable = false;
+        holdingTime = 0;
     }
 
     public static void GetInterfaces<T>(out List<T> resultList, GameObject objectToSearch) where T : class
