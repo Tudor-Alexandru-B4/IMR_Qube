@@ -3,6 +3,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using cakeslice;
+using NaughtyAttributes;
 
 public class Engine : MonoBehaviour
 {
@@ -77,33 +78,39 @@ public class Engine : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 selectedObject = hit.collider.gameObject;
-                if (selectedObject != null)
-                {
-                    string objectTag = selectedObject.tag;
-                    if (canDoAll.Contains(selectedObject.tag))
-                    {
-                        movable = scalable = rotatable = true;
-                    }
-                    else
-                    {
-                        movable = canMove.Contains(objectTag);
-                        scalable = canScale.Contains(objectTag);
-                        rotatable = canRotate.Contains(objectTag);
-                    }
-                    justTappable = justTap.Contains(selectedObject.tag);
+                InitiateAvailableMoves();
+            }
+        }
+    }
 
-                    if(movable || scalable || rotatable || justTappable)
-                    {
-                        Outline outline = selectedObject.GetComponent<Outline>();
-                        if(outline != null)
-                        {
-                            outline.eraseRenderer = false;
-                        }
-                        else
-                        {
-                            selectedObject.AddComponent<Outline>();
-                        }
-                    }
+    [Button]
+    private void InitiateAvailableMoves()
+    {
+        if (selectedObject != null)
+        {
+            string objectTag = selectedObject.tag;
+            if (canDoAll.Contains(selectedObject.tag))
+            {
+                movable = scalable = rotatable = true;
+            }
+            else
+            {
+                movable = canMove.Contains(objectTag);
+                scalable = canScale.Contains(objectTag);
+                rotatable = canRotate.Contains(objectTag);
+            }
+            justTappable = justTap.Contains(selectedObject.tag);
+
+            if (movable || scalable || rotatable || justTappable)
+            {
+                Outline outline = selectedObject.GetComponent<Outline>();
+                if (outline != null)
+                {
+                    outline.eraseRenderer = false;
+                }
+                else
+                {
+                    selectedObject.AddComponent<Outline>();
                 }
             }
         }
@@ -158,6 +165,7 @@ public class Engine : MonoBehaviour
         }
     }
 
+    [Button]
     private void ExecuteIfTappable()
     {
         if (holdingTime <= maxTapHoldTime)
