@@ -23,7 +23,7 @@ MonoBehaviour:
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 1
+  m_Maximized: 0
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -349,6 +349,7 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
     - Assets/Scripts/Levels/Level3
+    - Assets/ZAddons/DebugXR, by Tobiesen/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
@@ -364,6 +365,16 @@ MonoBehaviour:
     m_SelectedIDs: 34670000
     m_LastClickedID: 26420
     m_ExpandedIDs: 0000000066660000686600006a6600006c66000000ca9a3b
+  - Assets/ZAddons/DebugXR, by Tobiesen/Prefabs
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: E:\Qube\IMR_Qube\Qube
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 275}
+    m_SelectedIDs: 3e670000
+    m_LastClickedID: 26430
+    m_ExpandedIDs: 0000000090660000926600009466000096660000986600009a6600009c6600009e660000a0660000a2660000a4660000286700003667000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -379,7 +390,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -419,7 +430,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000d86300004e650000
+    m_ExpandedInstanceIDs: c6230000d86300004e65000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -523,21 +534,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 5e080000
       m_LastClickedID: 0
-      m_ExpandedIDs: 2cfbffff
+      m_ExpandedIDs: bc6fffff0a70ffff2873ffffe473ffff3674ffffe274ffff8277ffffd077ffff8e78ffff4a79ffff9a79ffff3e7affff0a7fffff587fffff7682ffff3283ffff8483ffff3084ffff9c8cffff828dffffdc8effff5890ffff449cffff929cffff509dffff9c9dffffec9dffff909effff16a6ffff38a7ffff86a7ffffa8aafffff4aaffff44abfffff0abffff4aaeffffd2b3ffff1ec4ffff6cc4ffff8ac7ffffd6c7ffff98c8ffff44c9ffff58d2ffffaad2ffff68d3ffffb2d3ffff02d4ffffa6d4ffff9edaffffecdaffff10deffff5cdeffffacdeffff58dfffff22f1ffff54f9ffff2cfbffff66810000688100006a8100006c8100003c8500003e8500004085000042850000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Engine
+        m_OriginalName: Engine
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 34866
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -822,9 +833,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0806598, y: -0.09256202, z: 0.0075236917, w: -0.99240893}
+    m_Target: {x: -0.22876613, y: -0.04816433, z: 0.011334528, w: -0.97222507}
     speed: 2
-    m_Value: {x: -0.08065957, y: -0.09256175, z: 0.0075236703, w: -0.9924061}
+    m_Value: {x: -0.2287657, y: -0.048164237, z: 0.011334507, w: -0.9722232}
   m_Size:
     m_Target: 0.27660272
     speed: 2
@@ -834,8 +845,8 @@ MonoBehaviour:
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.7662
-    m_SpeedNormalized: 0.38
+    m_Speed: 0.8259
+    m_SpeedNormalized: 0.41
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -914,7 +925,7 @@ MonoBehaviour:
   m_SerializedViewNames:
   - UnityEditor.DeviceSimulation.SimulatorWindow
   m_SerializedViewValues:
-  - D:\Facultate III\Qube\Qube\Library\PlayModeViewStates\e210712e1d5f3d74aa7310a86dda3a24
+  - D:\Facultate III\Qube\Qube\Library\PlayModeViewStates\5ed96043bfe0731408cb6cd40dd12c61
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -974,6 +985,6 @@ MonoBehaviour:
   m_LastWindowPixelSize: {x: 940.5, y: 516.75}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000100000100
+  m_LowResolutionForAspectRatios: 00000000000100000100
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}

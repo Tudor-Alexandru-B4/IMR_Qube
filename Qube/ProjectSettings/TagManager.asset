@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - level_3_simple_cube
+  - Letter
+  - Cube
   layers:
   - Default
   - TransparentFX
