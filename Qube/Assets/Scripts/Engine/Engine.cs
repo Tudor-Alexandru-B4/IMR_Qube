@@ -70,7 +70,6 @@ public class Engine : MonoBehaviour
 
         ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
 
-        //TODO: Raycast Unity
         if (Physics.Raycast(ray, out hit))
         {
             InstantiateHitObject();
@@ -149,25 +148,6 @@ public class Engine : MonoBehaviour
                 selectedObject.transform.position = createdPoint.transform.position;
                 selectedObject.transform.rotation = createdPoint.transform.rotation;
             }
-
-            //selectedObject.transform.position = hits[0].pose.position;
-
-            //selectedObject.transform.position = new Vector3(
-            //        selectedObject.transform.position.x + (Input.GetTouch(0).position.x - lastPositionX),
-            //        selectedObject.transform.position.y + (Input.GetTouch(0).position.y - lastPositionY),
-            //        selectedObject.transform.position.z
-            //    );
-            //lastPositionX = Input.GetTouch(0).position.x;
-            //lastPositionY = Input.GetTouch(0).position.y;
-            //lastPositionZ = camera.transform.position.z;
-            //Debug.Log(selectedObject.transform.position.x);
-            //Debug.Log(selectedObject.transform.position.y);
-            //Debug.Log(selectedObject.transform.position.z);
-            //Debug.Log(Input.GetTouch(0).position.x);
-            //Debug.Log(Input.GetTouch(0).position.y);
-            //Debug.Log("---------------------------");
-
-            //selectedObject.transform.position = Vector3.MoveTowards(selectedObject.transform.position, Input.GetTouch(0).position, Time.deltaTime);
         }
     }
 
@@ -208,6 +188,12 @@ public class Engine : MonoBehaviour
     {
         if (selectedObject != null && rotatable && Input.touchCount == 3)
         {
+            if (movable && createdPoint != null)
+            {
+                Destroy(createdPoint);
+                createdPoint = null;
+                movableParented = false;
+            }
             selectedObject.transform.rotation = camera.transform.rotation;
         }
     }
@@ -235,9 +221,10 @@ public class Engine : MonoBehaviour
 
         if (Input.touchCount < 1 || Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)
         {
-            if (movablePoint != null)
+            if (createdPoint != null)
             {
                 Destroy(createdPoint);
+                createdPoint = null;
                 movableParented = false;
             }
             selectedObject.GetComponent<Outline>().eraseRenderer = true;
@@ -250,16 +237,28 @@ public class Engine : MonoBehaviour
 
     public void ForceReset()
     {
+        if (createdPoint != null)
+        {
+            Destroy(createdPoint);
+            createdPoint = null;
+            movableParented = false;
+        }
         scaling = false;
         selectedObject.GetComponent<Outline>().eraseRenderer = true;
         ExecuteIfTappable();
         selectedObject = null;
-        movable = scalable = rotatable = justTappable = false;
+        movable = scalable = rotatable = justTappable = movableParented = false;
         holdingTime = 0;
     }
 
     public static void GetInterfaces<T>(out List<T> resultList, GameObject objectToSearch) where T : class
     {
+        if (objectToSearch == null)
+        {
+            resultList = new List<T>();
+            return;
+        }
+        
         MonoBehaviour[] list = objectToSearch.GetComponents<MonoBehaviour>();
         resultList = new List<T>();
         foreach (MonoBehaviour mb in list)

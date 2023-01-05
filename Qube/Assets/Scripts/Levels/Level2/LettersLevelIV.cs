@@ -14,6 +14,7 @@ public class LettersLevelIV : MonoBehaviour
                 collider.transform.position = gameObject.transform.position;
                 collider.transform.rotation = gameObject.transform.rotation;
                 collider.transform.localScale = gameObject.transform.localScale;
+                collider.transform.parent = null;
                 collider.tag = "Untagged";
                 Destroy(gameObject);
             }
