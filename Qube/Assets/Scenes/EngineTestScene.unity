@@ -1245,7 +1245,7 @@ PrefabInstance:
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
       propertyPath: canDoAll.Array.data[0]
-      value: 
+      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
