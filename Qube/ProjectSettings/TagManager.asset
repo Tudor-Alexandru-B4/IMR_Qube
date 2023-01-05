@@ -8,6 +8,7 @@ TagManager:
   - Letter
   - Cube
   - WrongCube
+  - simple_cube
   layers:
   - Default
   - TransparentFX
