@@ -11,6 +11,7 @@ public class Engine : MonoBehaviour
     ARRaycastManager raycastManager;
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
     RaycastHit hit;
+    RaycastHit hitMovable;
     Ray ray;
 
     new Camera camera;
@@ -41,7 +42,15 @@ public class Engine : MonoBehaviour
 
     float holdingTime = 0;
 
-    
+    float lastPositionX;
+    float lastPositionY;
+    float lastPositionZ;
+
+    bool movableParented = false;
+
+    [SerializeField]
+    GameObject movablePoint;
+    GameObject createdPoint = null;
 
     void Start()
     {
@@ -61,11 +70,13 @@ public class Engine : MonoBehaviour
 
         ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
 
-        //TODO: Raycast Unity
-        if (raycastManager.Raycast(Input.GetTouch(0).position, hits))
+        if (Physics.Raycast(ray, out hit))
         {
             InstantiateHitObject();
+        }
 
+        if (selectedObject != null)
+        {
             ExecuteIfMovingAMovable();
             ExecuteIfScalingAScalable();
             ExecuteIfRotatingARotatable();
@@ -78,9 +89,12 @@ public class Engine : MonoBehaviour
     {
         if (Input.GetTouch(0).phase == TouchPhase.Began && selectedObject == null)
         {
-            if (Physics.Raycast(ray, out hit) && selectedObject == null)
+            if (selectedObject == null)
             {
                 selectedObject = hit.collider.gameObject;
+                lastPositionX = Input.GetTouch(0).position.x;
+                lastPositionY = Input.GetTouch(0).position.y;
+                lastPositionZ = camera.transform.position.z;
                 InitiateAvailableMoves();
             }
         }
@@ -123,7 +137,17 @@ public class Engine : MonoBehaviour
     {
         if (movable && Input.GetTouch(0).phase == TouchPhase.Moved && selectedObject != null && Input.touchCount == 1)
         {
-            selectedObject.transform.position = hits[0].pose.position;
+            if (!movableParented)
+            {
+                createdPoint = Instantiate(movablePoint, hit.transform.position, selectedObject.transform.rotation) as GameObject;
+                movableParented = true;
+                createdPoint.transform.parent = camera.transform;
+            }
+            else
+            {
+                selectedObject.transform.position = createdPoint.transform.position;
+                selectedObject.transform.rotation = createdPoint.transform.rotation;
+            }
         }
     }
 
@@ -164,6 +188,12 @@ public class Engine : MonoBehaviour
     {
         if (selectedObject != null && rotatable && Input.touchCount == 3)
         {
+            if (movable && createdPoint != null)
+            {
+                Destroy(createdPoint);
+                createdPoint = null;
+                movableParented = false;
+            }
             selectedObject.transform.rotation = camera.transform.rotation;
         }
     }
@@ -191,26 +221,44 @@ public class Engine : MonoBehaviour
 
         if (Input.touchCount < 1 || Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled)
         {
+            if (createdPoint != null)
+            {
+                Destroy(createdPoint);
+                createdPoint = null;
+                movableParented = false;
+            }
             selectedObject.GetComponent<Outline>().eraseRenderer = true;
             ExecuteIfTappable();
             selectedObject = null;
-            movable = scalable = rotatable = justTappable = false;
+            movable = scalable = rotatable = justTappable = movableParented = false;
             holdingTime = 0;
         }
     }
 
     public void ForceReset()
     {
+        if (createdPoint != null)
+        {
+            Destroy(createdPoint);
+            createdPoint = null;
+            movableParented = false;
+        }
         scaling = false;
         selectedObject.GetComponent<Outline>().eraseRenderer = true;
         ExecuteIfTappable();
         selectedObject = null;
-        movable = scalable = rotatable = justTappable = false;
+        movable = scalable = rotatable = justTappable = movableParented = false;
         holdingTime = 0;
     }
 
     public static void GetInterfaces<T>(out List<T> resultList, GameObject objectToSearch) where T : class
     {
+        if (objectToSearch == null)
+        {
+            resultList = new List<T>();
+            return;
+        }
+        
         MonoBehaviour[] list = objectToSearch.GetComponents<MonoBehaviour>();
         resultList = new List<T>();
         foreach (MonoBehaviour mb in list)

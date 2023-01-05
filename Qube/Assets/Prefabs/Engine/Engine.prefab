@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastManager: {fileID: 0}
+  maxTapHoldTime: 1
   canDoAll: []
   canMove: []
   canScale: []
   canRotate: []
+  justTap: []
+  movablePoint: {fileID: 4933407200772778797, guid: 8f0a99b49956c924493a3dd9c578b797,
+    type: 3}

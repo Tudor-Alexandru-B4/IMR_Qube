@@ -7,12 +7,10 @@ using UnityEngine.XR.ARFoundation;
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField]
-    ARRaycastManager raycastManager;
-    List<ARRaycastHit> hits = new List<ARRaycastHit>();
-
-    [SerializeField]
     private Camera camera;
     GameObject selectedObject;
+    RaycastHit hit;
+    Ray ray;
 
     void Start()
     {
@@ -24,23 +22,17 @@ public class ButtonManager : MonoBehaviour
         if (Input.touchCount == 0)
             return;
 
-        RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
-
-        //TODO: Use Unity Raycasting
-        if (raycastManager.Raycast(Input.GetTouch(0).position, hits))
+        if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
+            if (Physics.Raycast(ray, out hit))
             {
-                if (Physics.Raycast(ray, out hit))
-                {
-                    selectedObject = hit.collider.gameObject;
-                    string selectedName = selectedObject.name.ToString();
-                    ExecuteIfLevel(selectedName);
-                    ExecuteIfArrowButton(selectedName);
-                    ExecuteIfPlayButton(selectedName);
-                    ExecuteIfBackToMenu(selectedName);
-                }
+                selectedObject = hit.collider.gameObject;
+                string selectedName = selectedObject.name.ToString();
+                ExecuteIfLevel(selectedName);
+                ExecuteIfArrowButton(selectedName);
+                ExecuteIfPlayButton(selectedName);
+                ExecuteIfBackToMenu(selectedName);
             }
         }
     }
