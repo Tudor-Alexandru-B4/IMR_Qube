@@ -270,12 +270,28 @@ public class Engine : MonoBehaviour
         }
     }
 
+    private string GetLevelNumber(string level)
+    {
+        string number = "";
+        foreach (char c in level)
+        {
+            if (c >= '0' && c <= '9')
+            {
+                number += c;
+            }
+        }
+
+        return number;
+    }
+
     public void TriggerLevelSolved(string text = null)
     {
         if(text != null)
         {
             Debug.Log(text);
         }
+        int nextLevel = int.Parse(GetLevelNumber(SceneManager.GetActiveScene().name)) + 1;
+        GameObject.Find("PersistentDataManager").GetComponent<PersistentDataManager>().SaveData(nextLevel.ToString());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

@@ -39,16 +39,7 @@ public class ButtonManager : MonoBehaviour
                 ExecuteIfLevel(selectedName);
                 ExecuteIfArrowButton(selectedName);
                 ExecuteIfPlayButton(selectedName);
-                ExecuteIfBackToMenu(selectedName);
             }
-        }
-    }
-
-    void ExecuteIfBackToMenu(string name)
-    {
-        if (name.CompareTo("backToMenu") == 0)
-        {
-            SceneManager.LoadScene("Menu");
         }
     }
 
@@ -62,7 +53,7 @@ public class ButtonManager : MonoBehaviour
 
     void ExecuteIfLevel(string name)
     {
-        if (name.StartsWith("level"))
+        if (name.StartsWith("level") && selectedObject.transform.childCount == 0)
         {
             SceneManager.LoadScene(name);
         }
