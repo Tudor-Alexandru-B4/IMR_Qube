@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 44
+  controlID: 19
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 435
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -120,14 +120,14 @@ MonoBehaviour:
     y: 465
     width: 1485
     height: 482
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 14}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 14}
   - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 54
+  controlID: 25
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 55
+  controlID: 26
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -443,22 +443,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Engine
+    - Assets/Prefabs/Menu
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Engine
+  - Assets/Prefabs/Menu
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Facultate III\Qube\Qube
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 088d0000
-    m_LastClickedID: 36104
-    m_ExpandedIDs: 00000000b8660000ba660000bc660000be660000c0660000c2660000c4660000c6660000c8660000ca660000cc660000ce660000d0660000d2660000a0680000a668000000ca9a3b
+    scrollPos: {x: 0, y: 71}
+    m_SelectedIDs: ba690000
+    m_LastClickedID: 27066
+    m_ExpandedIDs: 0000000080680000826800008468000086680000886800008a6800008c6800008e68000090680000926800009468000096680000986800009a6800009c6800002c69000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -486,7 +486,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b8660000ba660000bc660000be660000c0660000c2660000c4660000c6660000c8660000ca660000cc660000ce660000d0660000d2660000
+    m_ExpandedIDs: 0000000080680000826800008468000086680000886800008a6800008c6800008e68000090680000926800009468000096680000986800009a6800009c680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -511,9 +511,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 46f5ffff
+    m_LastClickedInstanceID: -2746
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 5}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -618,7 +618,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 08bfffff56bfffff7ac2ffff8ac2ffff94c2ffff9ec2ffffaec2ffffbac2ffffd0c2ffff72c3ffff3ac8ffff34cfffff54d0ffffa2d0ffffc8d3ffffd8d3ffffe2d3ffffecd3fffffcd3ffff08d4ffff20d4ffffc2d4ffff64d5ffffd0d5ffffc4d8ffffacd9ffff4cdaffff06dbffffaadbffff52dcffff02ddffffd8dfffff26e0ffff1ce2ffffa8e2ffff38e3ffffc4e3ffff4ee4ffffdae4ffff64e5fffff0e5ffff7ee6ffff0ae7ffff94e7ffff20e8ffffaae8ffff36e9ffffc0e9ffffaaeaffffb2efffff3cf0ffffccf0ffff7ef1ffffacf2ffff56f3ffffe6f3ffffeaf4ffff74f5ffff3ef6ffff8cf6ffff00f8fffffcfafffff4ffffff84670000ea67000002680000d46d0000fe6d00007479000096790000c68c0000
+      m_ExpandedIDs: 6aa8ffffb8a8ffffdcabffffecabfffff6abffff00acffff10acffff1cacffff34acffffdcacffffe4b0ffff04b5ffff52b5ffff78b8ffff88b8ffff92b8ffff9cb8ffffacb8ffffb8b8ffffd0b8ffff78b9ffff2cfbfffff4ffffffb8650000da650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -634,7 +634,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 5}
+        m_ClientGUIView: {fileID: 4}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -868,9 +868,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.0421789, y: 0.7937236, z: 1.0816927}
+    m_Target: {x: 2.758975, y: -1.1513202, z: 12.302177}
     speed: 2
-    m_Value: {x: -2.0421789, y: 0.7937236, z: 1.0816927}
+    m_Value: {x: 2.758975, y: -1.1513202, z: 12.302177}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -917,13 +917,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.12127259, y: -0.02084294, z: 0.0025465384, w: -0.99240154}
+    m_Target: {x: -0.09133734, y: -0.053747278, z: 0.004935804, w: -0.99436253}
     speed: 2
-    m_Value: {x: -0.12127205, y: -0.020842848, z: 0.0025465272, w: -0.9923972}
+    m_Value: {x: -0.09133677, y: -0.053746946, z: 0.004935773, w: -0.9943564}
   m_Size:
-    m_Target: 3.5635002
+    m_Target: 9.17211
     speed: 2
-    m_Value: 3.5635002
+    m_Value: 9.17211
   m_Ortho:
     m_Target: 0
     speed: 2
