@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,12 @@ public class ButtonManager : MonoBehaviour
     void Start()
     {
         camera = GameObject.Find("AR Camera").GetComponent<Camera>();
+    }
+
+    [Button]
+    void PlayLatestLevel()
+    {
+        SceneManager.LoadScene("level1");
     }
 
     void Update()

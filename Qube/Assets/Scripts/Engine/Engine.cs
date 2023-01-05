@@ -7,7 +7,6 @@ using NaughtyAttributes;
 
 public class Engine : MonoBehaviour
 {
-    [SerializeField]
     ARRaycastManager raycastManager;
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
     RaycastHit hit;
@@ -56,6 +55,7 @@ public class Engine : MonoBehaviour
     {
         selectedObject = null;
         camera = GameObject.Find("AR Camera").GetComponent<Camera>();
+        raycastManager = GameObject.Find("AR Session Origin").GetComponent<ARRaycastManager>();
     }
 
     void Update()
