@@ -9,6 +9,10 @@ TagManager:
   - Cube
   - WrongCube
   - simple_cube
+  - Level9
+  - Blue9
+  - Yellow9
+  - Sphere9
   layers:
   - Default
   - TransparentFX
