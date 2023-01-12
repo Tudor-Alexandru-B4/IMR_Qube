@@ -11,6 +11,7 @@ public class LockManager : MonoBehaviour
     void Start()
     {
         PersistentDataManager dataManager = GameObject.Find("PersistentDataManager").GetComponent<PersistentDataManager>();
+        dataManager.SaveData("20");
         int lastUnlockedLevel = int.Parse(dataManager.LoadData());
 
         foreach (Transform row in levels.transform)

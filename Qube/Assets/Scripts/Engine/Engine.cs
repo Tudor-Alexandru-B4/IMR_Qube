@@ -227,7 +227,10 @@ public class Engine : MonoBehaviour
                 createdPoint = null;
                 movableParented = false;
             }
-            selectedObject.GetComponent<Outline>().eraseRenderer = true;
+            if (selectedObject.GetComponent<Outline>() != null)
+            {
+                selectedObject.GetComponent<Outline>().eraseRenderer = true;
+            }
             ExecuteIfTappable();
             selectedObject = null;
             movable = scalable = rotatable = justTappable = movableParented = false;
@@ -244,7 +247,10 @@ public class Engine : MonoBehaviour
             movableParented = false;
         }
         scaling = false;
-        selectedObject.GetComponent<Outline>().eraseRenderer = true;
+        if (selectedObject.GetComponent<Outline>() != null)
+        {
+            selectedObject.GetComponent<Outline>().eraseRenderer = true;
+        }
         ExecuteIfTappable();
         selectedObject = null;
         movable = scalable = rotatable = justTappable = movableParented = false;
