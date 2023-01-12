@@ -13,6 +13,7 @@ TagManager:
   - Blue9
   - Yellow9
   - Sphere9
+  - Cube14
   layers:
   - Default
   - TransparentFX
