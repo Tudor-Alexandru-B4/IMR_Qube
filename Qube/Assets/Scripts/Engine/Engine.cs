@@ -77,6 +77,8 @@ public class Engine : MonoBehaviour
 
         if (selectedObject != null)
         {
+            ExitToMenuIfDoor();
+
             ExecuteIfMovingAMovable();
             ExecuteIfScalingAScalable();
             ExecuteIfRotatingARotatable();
@@ -130,6 +132,15 @@ public class Engine : MonoBehaviour
                     selectedObject.AddComponent<Outline>();
                 }
             }
+        }
+    }
+
+    [Button]
+    private void ExitToMenuIfDoor()
+    {
+        if (selectedObject.tag == "door")
+        {
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -227,7 +238,10 @@ public class Engine : MonoBehaviour
                 createdPoint = null;
                 movableParented = false;
             }
-            selectedObject.GetComponent<Outline>().eraseRenderer = true;
+            if (selectedObject.GetComponent<Outline>() != null)
+            {
+                selectedObject.GetComponent<Outline>().eraseRenderer = true;
+            }
             ExecuteIfTappable();
             selectedObject = null;
             movable = scalable = rotatable = justTappable = movableParented = false;
@@ -244,7 +258,10 @@ public class Engine : MonoBehaviour
             movableParented = false;
         }
         scaling = false;
-        selectedObject.GetComponent<Outline>().eraseRenderer = true;
+        if (selectedObject.GetComponent<Outline>() != null)
+        {
+            selectedObject.GetComponent<Outline>().eraseRenderer = true;
+        }
         ExecuteIfTappable();
         selectedObject = null;
         movable = scalable = rotatable = justTappable = movableParented = false;

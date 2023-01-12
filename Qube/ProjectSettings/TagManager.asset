@@ -13,6 +13,8 @@ TagManager:
   - Blue9
   - Yellow9
   - Sphere9
+  - stem
+  - door
   layers:
   - Default
   - TransparentFX
