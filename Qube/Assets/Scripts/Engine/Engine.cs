@@ -77,6 +77,8 @@ public class Engine : MonoBehaviour
 
         if (selectedObject != null)
         {
+            ExitToMenuIfDoor();
+
             ExecuteIfMovingAMovable();
             ExecuteIfScalingAScalable();
             ExecuteIfRotatingARotatable();
@@ -130,6 +132,15 @@ public class Engine : MonoBehaviour
                     selectedObject.AddComponent<Outline>();
                 }
             }
+        }
+    }
+
+    [Button]
+    private void ExitToMenuIfDoor()
+    {
+        if (selectedObject.tag == "door")
+        {
+            SceneManager.LoadScene(1);
         }
     }
 

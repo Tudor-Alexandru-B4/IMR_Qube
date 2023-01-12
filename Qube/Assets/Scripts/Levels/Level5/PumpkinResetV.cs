@@ -21,6 +21,8 @@ public class PumpkinResetV : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = true;
 
+        gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+
         foreach(Transform child in gameObject.transform)
         {
             child.gameObject.SetActive(true);
