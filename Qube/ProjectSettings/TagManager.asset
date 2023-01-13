@@ -13,12 +13,12 @@ TagManager:
   - Blue9
   - Yellow9
   - Sphere9
-<<<<<<< HEAD
   - Cube14
-=======
   - stem
   - door
->>>>>>> origin/main
+  - exit
+  - sound
+  - play
   layers:
   - Default
   - TransparentFX
