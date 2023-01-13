@@ -55,17 +55,12 @@ public class Engine : MonoBehaviour
     GameObject movablePoint;
     GameObject createdPoint = null;
 
-    [SerializeField]
-    int distanceToCamera;
-
-    private bool triggerAlreadyCalled = false;
-
     void Start()
     {
+        StopAllCoroutines();
         selectedObject = null;
         camera = GameObject.Find("AR Camera").GetComponent<Camera>();
         raycastManager = GameObject.Find("AR Session Origin").GetComponent<ARRaycastManager>();
-        triggerAlreadyCalled = false;
     }
 
     void Update()
@@ -318,38 +313,10 @@ public class Engine : MonoBehaviour
 
     public void TriggerLevelSolved(string text = null)
     {
-        if (triggerAlreadyCalled)
-            return;
-
-        triggerAlreadyCalled = true;
-
-        if(text != null)
-        {
-            Debug.Log(text);
-        }
-
-        var spawnPosition = camera.transform.forward * distanceToCamera + camera.transform.position;
-        var rotation = Quaternion.LookRotation(camera.transform.position, Vector3.up);
-
-        Instantiate(levelCompleteObject, spawnPosition, rotation);
-
-        StartCoroutine(WaitForSecondsAndChangeScene());
-    }
-
-    IEnumerator WaitForSecondsAndChangeScene()
-    {
-        yield return new WaitForSecondsRealtime(2);
-
-        ChangesScene();
-    }
-
-    private void ChangesScene()
-    {
         int nextLevel = int.Parse(GetLevelNumber(SceneManager.GetActiveScene().name)) + 1;
         GameObject.Find("PersistentDataManager").GetComponent<PersistentDataManager>().SaveData(nextLevel.ToString());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
 }
 
 
