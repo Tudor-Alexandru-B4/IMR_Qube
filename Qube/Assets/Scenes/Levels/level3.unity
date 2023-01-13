@@ -202,6 +202,17 @@ PrefabInstance:
       propertyPath: raycastManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
+      propertyPath: distanceToCamera
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129331460772568142, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
+        type: 3}
+      propertyPath: levelCompleteObject
+      value: 
+      objectReference: {fileID: 6611754155698084491, guid: e6d0085e136e19c4981f4f3c3b381513,
+        type: 3}
     - target: {fileID: 4129331460772568143, guid: 5247fc5d64e4b5249b4c0d035ee0a639,
         type: 3}
       propertyPath: m_Name

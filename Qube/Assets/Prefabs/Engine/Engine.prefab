@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a1b5f506bc0a7448bcc33ff687045f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastManager: {fileID: 0}
+  levelCompleteObject: {fileID: 6611754155698084491, guid: e6d0085e136e19c4981f4f3c3b381513,
+    type: 3}
   maxTapHoldTime: 1
   canDoAll: []
   canMove: []
@@ -53,3 +54,4 @@ MonoBehaviour:
   justTap: []
   movablePoint: {fileID: 4933407200772778797, guid: 8f0a99b49956c924493a3dd9c578b797,
     type: 3}
+  distanceToCamera: 5
