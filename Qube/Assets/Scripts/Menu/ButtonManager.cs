@@ -36,10 +36,29 @@ public class ButtonManager : MonoBehaviour
             {
                 selectedObject = hit.collider.gameObject;
                 string selectedName = selectedObject.name.ToString();
+                ExecuteIfExit(selectedName);
+                ExecuteIfSound(selectedName);
                 ExecuteIfLevel(selectedName);
                 ExecuteIfArrowButton(selectedName);
                 ExecuteIfPlayButton(selectedName);
             }
+        }
+    }
+
+    void ExecuteIfExit(string name)
+    {
+        if (name.StartsWith("exit"))
+        {
+            Application.Quit();
+        }
+    }
+
+    void ExecuteIfSound(string name)
+    {
+        if (name.StartsWith("sound"))
+        {
+            AudioSource jukebox = GameObject.Find("Jukebox").GetComponent<AudioSource>();
+            jukebox.mute = !jukebox.mute;
         }
     }
 
@@ -63,7 +82,11 @@ public class ButtonManager : MonoBehaviour
     {
         if (name.StartsWith("play"))
         {
-            SceneManager.LoadScene("EngineTestScene");
+            PersistentDataManager dataManager = GameObject.Find("PersistentDataManager").GetComponent<PersistentDataManager>();
+
+            string newestLevel = dataManager.LoadData();
+
+            SceneManager.LoadScene($"level{newestLevel}");
         }
     }
 }

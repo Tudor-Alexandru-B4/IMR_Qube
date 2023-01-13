@@ -17,6 +17,11 @@ TagManager:
   - cap
   - bowtie16
   - luckyhat
+  - stem
+  - door
+  - exit
+  - sound
+  - play
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 63627ee7140ecc94992c41a9e154798e
   - enabled: 1
+    path: Assets/Scenes/MenuPlaying.unity
+    guid: efde891f4e62eb6488164389413757c4
+  - enabled: 1
     path: Assets/Scenes/Levels/level1.unity
     guid: f031ef483795e92449f527b7a0d0e305
   - enabled: 1
@@ -21,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/level4.unity
     guid: 52294385c0dedf74c8a7c2272b1bfcb2
   - enabled: 1
+    path: Assets/Scenes/Levels/level5.unity
+    guid: 032a12df3d50d2c46a37a1ddfb4e093b
+  - enabled: 1
     path: Assets/Scenes/Levels/level6.unity
     guid: 61d9201da064940478b891b2ae4cb5c5
   - enabled: 1
@@ -29,15 +35,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/level9.unity
     guid: d7b621990364e9d49954a5f68f205cf5
-  - enabled: 0
-    path: Assets/Scenes/EngineTestScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Levels/level12.unity
     guid: 54ec9c9584902534c87df0c3db3ed8ad
   - enabled: 1
     path: Assets/Scenes/Levels/level16.unity
     guid: 3fa50f6f95e7e744c99b7a1fca193af3
+  - enabled: 1
+    path: Assets/Scenes/Levels/level14.unity
+    guid: dec1513dc406ca84f85920e4d2b6ff82
+  - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: 9352c477e29f33b43b98a19d4066de66
+  - enabled: 1
+    path: Assets/Scenes/EngineTestScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
