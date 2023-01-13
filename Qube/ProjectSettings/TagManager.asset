@@ -15,6 +15,9 @@ TagManager:
   - Sphere9
   - stem
   - door
+  - exit
+  - sound
+  - play
   layers:
   - Default
   - TransparentFX
