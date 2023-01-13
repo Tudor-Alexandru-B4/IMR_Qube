@@ -1,20 +1,15 @@
-using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tap8Times : MonoBehaviour, TapActionScript
+public class TriggerLevelXIV : MonoBehaviour
 {
     [SerializeField]
     Engine engine;
 
-    int numberOfTap = 0;
-
-    [Button]
-    public void TapAction()
+    void Update()
     {
-        numberOfTap++;
-        if(numberOfTap==8)
+        if (gameObject.transform.childCount <= 0)
         {
             engine.TriggerLevelSolved();
         }
