@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tap8Times : MonoBehaviour
+public class Tap8Times : MonoBehaviour, TapActionScript
 {
     [SerializeField]
     Engine engine;
@@ -14,7 +14,7 @@ public class Tap8Times : MonoBehaviour
     public void TapAction()
     {
         numberOfTap++;
-        if(numberOfTap==0)
+        if(numberOfTap==8)
         {
             engine.TriggerLevelSolved();
         }
