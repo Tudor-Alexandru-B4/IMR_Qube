@@ -308,6 +308,11 @@ public class Engine : MonoBehaviour
             }
         }
 
+        if (number == "")
+        {
+            number = "0";
+        }
+
         return number;
     }
 

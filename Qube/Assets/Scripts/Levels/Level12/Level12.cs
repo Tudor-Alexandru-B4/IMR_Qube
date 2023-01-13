@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level12 : MonoBehaviour
+public class Level12 : MonoBehaviour, TapActionScript
 {
     [SerializeField]
     Engine engine;
